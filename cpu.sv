@@ -73,7 +73,7 @@ logic [15:0] alu_o;
 logic [2:0] dr;
 logic [2:0] sr1;
 logic [2:0] sr2;
-logic [2:0] sr2_reg_o;
+logic [15:0] sr2_reg_o;
 
 
 logic [15:0] sr1_o;
