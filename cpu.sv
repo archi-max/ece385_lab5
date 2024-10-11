@@ -73,6 +73,7 @@ logic [15:0] alu_o;
 logic [2:0] dr;
 logic [2:0] sr1;
 logic [2:0] sr2;
+logic [2:0] sr2_reg_o;
 
 
 logic [15:0] sr1_o;
@@ -499,7 +500,7 @@ Addr2Mux adder2mux_real (
     .a(st_11),
     .b(st_9),
     .c(st_6),
-    .d(0),
+    .d(16'b0),
     .select(ld_adder2mux),
     .out(adder2mux_o)
 );

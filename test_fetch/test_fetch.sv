@@ -42,6 +42,8 @@ module test_fetch( );
 		#1 clk = ~clk;
 	end
 	
+	// #10;
+	
 	initial begin: TEST_VECTORS
 	//Initialization
 	   
@@ -52,16 +54,14 @@ module test_fetch( );
 	   continue_i = 0;
 	   sw_i = 16'b0;
        end
-	   
-	   
-	 //Reset the System
-	   repeat (5) @(posedge clk) begin
-       reset = 0;
-    end
 
-		sw_i = 16'h009C;
+	   repeat (5) @(posedge clk);
+	   reset = 0;
+	   
+		sw_i = 16'h0014;
+
+		
 	
-       
 	   repeat (5) @(posedge clk) begin
         run_i = 1;
 		end
@@ -69,9 +69,33 @@ module test_fetch( );
         run_i = 0;
 		end
 
-	repeat (4000) @(posedge clk);
+		sw_i = 16'd1;
+		
+						continue_i <= 1'b0;
+		repeat (500) @(posedge clk);
+		continue_i <= 1'b1;
+		# 10
+		continue_i <= 1'b0;
 
-	// #20000;
+		repeat (10) @(posedge clk);
+		sw_i = 16'd0;
+        
+  
+		repeat (500) @(posedge clk);
+		continue_i <= 1'b1;
+		# 10
+		continue_i <= 1'b0;	
+        
+       repeat (500) @(posedge clk);
+
+
+
+			$finish;
+	end
+
+//	repeat (2000) @(posedge clk)
+
+	// #100;
 	 
 //   repeat (5) @(posedge clk) begin
 //         continue_i = 1;
@@ -112,9 +136,18 @@ module test_fetch( );
 // 	   repeat (5) @(posedge clk) begin
 //         continue_i = 0;
 // 		end
+
+	// task press_continue()
+	// begin
+	// 	continue_i <= 1'b0;
+	// 	# 10
+	// 	continue_i <= 1'b1;
+	// 	# 10
+	// 	continue_i <= 1'b0;
+	// end
+	// endtask
 	 
 
-		$finish;
-	end
+
 	
 endmodule

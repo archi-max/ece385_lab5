@@ -247,6 +247,8 @@ module control (
              s_22 :
                 begin
                     ld_pcmux = 2'b01;
+					ld_adder2mux = 2'b01;
+					ld_adder1mux = 1'b0;
 					ld_pc = 1'b1;
                 end
              s_12 :
