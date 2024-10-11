@@ -55,12 +55,12 @@ module test_fetch( );
 	   sw_i = 16'b0;
        end
 
-	   repeat (5) @(posedge clk);
+	   repeat (20) @(posedge clk);
 	   reset = 0;
-	   
+
 		sw_i = 16'h0014;
 
-		
+			   repeat (20) @(posedge clk);
 	
 	   repeat (5) @(posedge clk) begin
         run_i = 1;
@@ -68,6 +68,8 @@ module test_fetch( );
 		repeat (5) @(posedge clk) begin
         run_i = 0;
 		end
+
+		repeat (50) @(posedge clk);
 
 		sw_i = 16'd1;
 		
