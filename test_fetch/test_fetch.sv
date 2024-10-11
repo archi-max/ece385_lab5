@@ -73,13 +73,15 @@ module test_fetch( );
 
 		sw_i = 16'd1;
 		
-						continue_i <= 1'b0;
+		continue_i <= 1'b0;
 		repeat (500) @(posedge clk);
 		continue_i <= 1'b1;
 		# 10
 		continue_i <= 1'b0;
 
-		repeat (10) @(posedge clk);
+		repeat (40) @(posedge clk);
+
+
 		sw_i = 16'd0;
         
   
